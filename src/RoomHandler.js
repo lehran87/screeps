@@ -16,6 +16,14 @@ var RoomHandler = {
     for(var n in rooms){
       n.run();
     }
+    
+    if( !(Game.time % 100)){
+      for(var n in Game.rooms) {
+        var room = new Room(Game.rooms[n]);
+        rooms.push(room);
+      }
+      console.log("Raeume: "+rooms.length);
+    }
   },
   
   newRoom: function(newRoom){
