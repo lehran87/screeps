@@ -13,7 +13,7 @@ module.exports = {
     this.structures = [];
     
     this.creepHandler = new CreepHandler(room);
-  };
+  }
   
   function run(){
     creepHandler.run();

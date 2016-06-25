@@ -14,12 +14,12 @@ var RoomHandler = {
     for(var n in rooms){
       n.run();
     }
-  };
+  }
   
   function newRoom(newRoom){
     var room = new Room(newRoom);
     rooms.push(room);
-  };
+  }
 }
  
 module.exports = RoomHandler;

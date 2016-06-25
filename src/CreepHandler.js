@@ -21,7 +21,7 @@ module.exports = {
     this.builder = new BuilderModule();
     this.updater = new UpdaterModule();
     this.room = room;
-  };
+  }
   
   function run(){
     checkModules(); //sind alle Module vorhanden?
@@ -29,7 +29,7 @@ module.exports = {
     harvester.run();
     builder.run();
     updater.run();
-  };
+  }
   
   function createCreep(role, spawn){
     switch(role){
@@ -40,7 +40,7 @@ module.exports = {
       case 'updater';
         return spawn.createCreep(roleUpdater, 0, {role: ['builder','harvester','updater']});
     }
-  };
+  }
   
   
 };
@@ -58,4 +58,4 @@ function checkModules = {
     console.log('Fehlender Updater, erstelle neuen');
     this.updater = new UpdaterModule(room);
   }  
-};
+}
