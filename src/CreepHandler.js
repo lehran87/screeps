@@ -15,24 +15,23 @@
  var roleBuilder   = [CARRY, WORK, MOVE, MOVE];
  var roleUpdater   = [CARRY, WORK, MOVE, MOVE];
  
-var CreepHandler = {
-  CreepHandler: function(room){
+ function CreepHandler(room){
     this.harvester = HarvesterModule();
     this.builder = BuilderModule();
     this.updater = UpdaterModule();
     this.room = room;
-  },
+}:
   
-  run: function(){
+CreepHandler.prototype.run = function(){
     console.log("CH: Run");
     checkModules(); //sind alle Module vorhanden?
     //Run in allen Modulen aufrufen
     harvester.run();
     builder.run();
     updater.run();
-  },
+};
   
-  createCreep: function(role, spawn){
+CreepHandler.prototype.createCreep = function(role, spawn){
     switch(role){
       case 'harvester':
         return spawn.createCreep(roleHarvester, 0, {role: ['builder','harvester','updater']});
@@ -44,9 +43,9 @@ var CreepHandler = {
         break;
     }
     return;
-  },
+};
   
-  checkModules: function() {
+ CreepHandler.prototype.checkModules = function() {
     console.log("CH: Check");
     if(!harvester){
       console.log('Fehlender Harvester, erstelle neuen');

@@ -7,15 +7,14 @@
  * mod.thing == 'a thing'; // true
  */
  
-var Room = {
-  Room: function(room){
+function Room (room){
     this.room=room;
     this.structures = [];
     
     this.creepHandler = CreepHandler(room);
-  },
+};
 
-  run: function(){
+Room.prototype.run = function(){
     console.log("Room "+room+": Run");
     creepHandler.run();
   }
