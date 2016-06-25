@@ -7,14 +7,13 @@
  * mod.thing == 'a thing'; // true
  */
 
-var creepHandler = require('CreepHandler'); 
-
-function HarvestModule(room){
+function HarvesterModule(room, creepHandler){
     this.creeps = {};
     this.room = room;
+    this.creepHandler = creepHandler;
 };
  
-HarvestModule.prototype.run = function(){
+HarvesterModule.prototype.run = function(){
     if(creeps.length < Memory.population.harvester){
       var spawns = room.find(FIND_MY_SPAWNS);
       var spawn = _.filter(spawns, (sp) => sp.energy == energyCapacity );
@@ -38,7 +37,6 @@ HarvestModule.prototype.run = function(){
             }
         }
     }
-  }
 };
 
 module.exports = HarvesterModule;

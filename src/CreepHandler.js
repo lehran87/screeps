@@ -8,8 +8,8 @@
  */
 
  var harvester = require('HarvesterModule');
- var builder = require('BuilderModule');
- var updater = require('UpdaterModule');
+ //var builder = require('BuilderModule');
+ //var upgrader = require('UpgraderModule');
  
  var roleHarvester = [CARRY, WORK, MOVE, MOVE];
  var roleBuilder   = [CARRY, WORK, MOVE, MOVE];
@@ -20,15 +20,15 @@
     this.builder = BuilderModule();
     this.updater = UpdaterModule();
     this.room = room;
-}:
+};
   
 CreepHandler.prototype.run = function(){
     console.log("CH: Run");
     checkModules(); //sind alle Module vorhanden?
     //Run in allen Modulen aufrufen
     harvester.run();
-    builder.run();
-    updater.run();
+    //builder.run();
+    //updater.run();
 };
   
 CreepHandler.prototype.createCreep = function(role, spawn){
@@ -51,15 +51,14 @@ CreepHandler.prototype.createCreep = function(role, spawn){
       console.log('Fehlender Harvester, erstelle neuen');
       this.harvester = HarvesterModule(room);
     }
-    if(!builder){
-      console.log('Fehlender Builder, erstelle neuen');
-      this.builder = BuilderModule(room);
-    }
-    if(!updater){
-      console.log('Fehlender Updater, erstelle neuen');
-      this.updater = UpdaterModule(room);
-    }  
-  }
-};
+//    if(!builder){
+//      console.log('Fehlender Builder, erstelle neuen');
+//      this.builder = BuilderModule(room);
+//    }
+//    if(!updater){
+//      console.log('Fehlender Updater, erstelle neuen');
+//      this.updater = UpdaterModule(room);
+//    }  
+  };
 
 module.exports = CreepHandler;

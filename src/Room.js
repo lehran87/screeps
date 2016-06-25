@@ -6,6 +6,7 @@
  * var mod = require('RoomHandler');
  * mod.thing == 'a thing'; // true
  */
+ var CreepHandler = require('CreepHandler');
  
 function Room (room){
     this.room=room;
@@ -17,7 +18,7 @@ function Room (room){
 Room.prototype.run = function(){
     console.log("Room "+room+": Run");
     creepHandler.run();
-  }
+
 };
  
 module.exports = Room;
