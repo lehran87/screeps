@@ -12,7 +12,7 @@ var Room = {
     this.room=room;
     this.structures = [];
     
-    this.creepHandler = new CreepHandler(room);
+    this.creepHandler = CreepHandler(room);
   },
 
   run: function(){

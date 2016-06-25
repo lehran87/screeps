@@ -17,9 +17,9 @@
  
 var CreepHandler = {
   CreepHandler: function(room){
-    this.harvester = new HarvesterModule();
-    this.builder = new BuilderModule();
-    this.updater = new UpdaterModule();
+    this.harvester = HarvesterModule();
+    this.builder = BuilderModule();
+    this.updater = UpdaterModule();
     this.room = room;
   },
   
@@ -50,15 +50,15 @@ var CreepHandler = {
     console.log("CH: Check");
     if(!harvester){
       console.log('Fehlender Harvester, erstelle neuen');
-      this.harvester = new HarvesterModule(room);
+      this.harvester = HarvesterModule(room);
     }
     if(!builder){
       console.log('Fehlender Builder, erstelle neuen');
-      this.builder = new BuilderModule(room);
+      this.builder = BuilderModule(room);
     }
     if(!updater){
       console.log('Fehlender Updater, erstelle neuen');
-      this.updater = new UpdaterModule(room);
+      this.updater = UpdaterModule(room);
     }  
   }
 };
