@@ -9,13 +9,13 @@
 
 var creepHandler = require('CreepHandler'); 
 
-module.exports = {
-  function HarvestModule(room){
+var HarvesterModule = {
+   HarvestModule: function(room){
     this.creeps = {};
     this.room = room;
-  }
-  
-  function run(){
+  },
+ 
+  run: function(){
     if(creeps.length < Memory.population.harvester){
       var spawns = room.find(FIND_MY_SPAWNS);
       var spawn = _.filter(spawns, (sp) => sp.energy == energyCapacity );
@@ -40,5 +40,6 @@ module.exports = {
         }
     }
   }
-  
 };
+
+module.exports = HarvesterModule;

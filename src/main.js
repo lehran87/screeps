@@ -11,4 +11,4 @@ var roomHandler = require('RoomHandler');
 
 module.exports.loop = function () {
   roomHandler.run();
-}
+};

@@ -8,18 +8,19 @@
  */
 var Room = require('Room');
 
+var rooms = [];
+
 var RoomHandler = {
-  var rooms = [];
-  function run(){
+  run: function(){
     for(var n in rooms){
       n.run();
     }
-  }
+  },
   
-  function newRoom(newRoom){
+  newRoom: function(newRoom){
     var room = new Room(newRoom);
     rooms.push(room);
   }
-}
+};
  
 module.exports = RoomHandler;

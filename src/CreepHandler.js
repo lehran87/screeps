@@ -15,47 +15,50 @@
  var roleBuilder   = [CARRY, WORK, MOVE, MOVE];
  var roleUpdater   = [CARRY, WORK, MOVE, MOVE];
  
-module.exports = {
-  function CreepHandler(room){
+var CreepHandler = {
+  CreepHandler: function(room){
     this.harvester = new HarvesterModule();
     this.builder = new BuilderModule();
     this.updater = new UpdaterModule();
     this.room = room;
-  }
+  },
   
-  function run(){
+  run: function(){
     checkModules(); //sind alle Module vorhanden?
     //Run in allen Modulen aufrufen
     harvester.run();
     builder.run();
     updater.run();
-  }
+  },
   
-  function createCreep(role, spawn){
+  createCreep: function(role, spawn){
     switch(role){
       case 'harvester':
         return spawn.createCreep(roleHarvester, 0, {role: ['builder','harvester','updater']});
       case 'builder':
         return spawn.createCreep(roleBuilder, 0, {role: ['builder','harvester','updater']});
-      case 'updater';
+      case 'updater':
         return spawn.createCreep(roleUpdater, 0, {role: ['builder','harvester','updater']});
+      default:
+        break;
     }
+    return;
+  },
+  
+  checkModules: function() {
+    if(!harvester){
+      console.log('Fehlender Harvester, erstelle neuen');
+      this.harvester = new HarvesterModule(room);
+    }
+    if(!builder){
+      console.log('Fehlender Builder, erstelle neuen');
+      this.builder = new BuilderModule(room);
+    }
+    if(!updater){
+      console.log('Fehlender Updater, erstelle neuen');
+      this.updater = new UpdaterModule(room);
+    }  
   }
-  
-  
 };
 
-function checkModules = {
-  if(!harvester){
-    console.log('Fehlender Harvester, erstelle neuen');
-    this.harvester = new HarvesterModule(room);
-  }
-  if(!builder){
-    console.log('Fehlender Builder, erstelle neuen');
-    this.builder = new BuilderModule(room);
-  }
-  if(!updater){
-    console.log('Fehlender Updater, erstelle neuen');
-    this.updater = new UpdaterModule(room);
-  }  
-}
+module.exports = CreepHandler;

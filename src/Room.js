@@ -7,15 +7,17 @@
  * mod.thing == 'a thing'; // true
  */
  
-module.exports = {
-  function Room(room){
+var Room = {
+  Room: function(room){
     this.room=room;
     this.structures = [];
     
     this.creepHandler = new CreepHandler(room);
-  }
-  
-  function run(){
+  },
+
+  run: function(){
     creepHandler.run();
   }
 };
+ 
+module.exports = Room;
