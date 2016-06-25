@@ -16,6 +16,7 @@ var Room = {
   },
 
   run: function(){
+    console.log("Room "+room+": Run");
     creepHandler.run();
   }
 };

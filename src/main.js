@@ -10,5 +10,6 @@
 var roomHandler = require('RoomHandler');
 
 module.exports.loop = function () {
+  console.log("Main: Run");
   roomHandler.run();
 };

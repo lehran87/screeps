@@ -12,6 +12,7 @@ var rooms = [];
 
 var RoomHandler = {
   run: function(){
+    console.log("RH: Run");
     for(var n in rooms){
       n.run();
     }

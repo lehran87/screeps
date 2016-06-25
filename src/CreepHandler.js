@@ -24,6 +24,7 @@ var CreepHandler = {
   },
   
   run: function(){
+    console.log("CH: Run");
     checkModules(); //sind alle Module vorhanden?
     //Run in allen Modulen aufrufen
     harvester.run();
@@ -46,6 +47,7 @@ var CreepHandler = {
   },
   
   checkModules: function() {
+    console.log("CH: Check");
     if(!harvester){
       console.log('Fehlender Harvester, erstelle neuen');
       this.harvester = new HarvesterModule(room);
