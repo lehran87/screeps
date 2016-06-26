@@ -1,64 +1,29 @@
-/*
- * Module code goes here. Use 'module.exports' to export things:
- * module.exports.thing = 'a thing';
- *
- * You can import it from another modules like this:
- * var mod = require('RoomHandler');
- * mod.thing == 'a thing'; // true
- */
+var HarvestModule = require('HarvestModule');
 
- var harvester = require('HarvesterModule');
- //var builder = require('BuilderModule');
- //var upgrader = require('UpgraderModule');
- 
- var roleHarvester = [CARRY, WORK, MOVE, MOVE];
- var roleBuilder   = [CARRY, WORK, MOVE, MOVE];
- var roleUpdater   = [CARRY, WORK, MOVE, MOVE];
- 
- function CreepHandler(room){
-    this.harvester = HarvesterModule();
-    this.builder = BuilderModule();
-    this.updater = UpdaterModule();
-    this.room = room;
+
+var CreepHandler = function(room){
+  this.room = room;
+  this.harvest = new HarvestModule(room);
+  this.harvestBody = [WORK, MOVE, MOVE, CARRY];
 };
-  
+
 CreepHandler.prototype.run = function(){
-    console.log("CH: Run");
-    checkModules(); //sind alle Module vorhanden?
-    //Run in allen Modulen aufrufen
-    harvester.run();
-    //builder.run();
-    //updater.run();
+    if(this.harvest.run() < 0)
+      this.createNewCreep('harvest');
 };
-  
-CreepHandler.prototype.createCreep = function(role, spawn){
-    switch(role){
-      case 'harvester':
-        return spawn.createCreep(roleHarvester, 0, {role: ['builder','harvester','updater']});
-      case 'builder':
-        return spawn.createCreep(roleBuilder, 0, {role: ['builder','harvester','updater']});
-      case 'updater':
-        return spawn.createCreep(roleUpdater, 0, {role: ['builder','harvester','updater']});
-      default:
-        break;
-    }
-    return;
-};
-  
- CreepHandler.prototype.checkModules = function() {
-    console.log("CH: Check");
-    if(!harvester){
-      console.log('Fehlender Harvester, erstelle neuen');
-      this.harvester = HarvesterModule(room);
-    }
-//    if(!builder){
-//      console.log('Fehlender Builder, erstelle neuen');
-//      this.builder = BuilderModule(room);
-//    }
-//    if(!updater){
-//      console.log('Fehlender Updater, erstelle neuen');
-//      this.updater = UpdaterModule(room);
-//    }  
-  };
 
-module.exports = CreepHandler;
+CreepHandler.prototype.createNewCreep = function(type){
+    switch(type){
+      case 'harvest':
+          var spawn = Game.rooms[this.room].find(FIND_MY_SPAWNS);
+          spawn = _.filter(spawn, (sp) => sp.canCreateCreep(this.harvestBody)==0);
+          if(spawn.length > 0 ){
+            var name = spawn[0].createCreep(this.harvestBody, undefined,
+                                              {task: 'harvest'});
+            console.log("Neuer Creep: "+name);
+          }
+    }
+};
+
+
+module.exports=CreepHandler;

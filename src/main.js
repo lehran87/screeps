@@ -1,15 +1,5 @@
-/*
- * Module code goes here. Use 'module.exports' to export things:
- * module.exports.thing = 'a thing';
- *
- * You can import it from another modules like this:
- * var mod = require('RoomHandler');
- * mod.thing == 'a thing'; // true
- */
- 
-var roomHandler = require('RoomHandler');
+var GameHandler = require('GameHandler');
 
-module.exports.loop = function () {
-  console.log("Main: Run");
-  roomHandler.run();
+module.exports.loop = function(){
+  GameHandler.run();
 };
