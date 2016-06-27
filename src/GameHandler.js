@@ -6,7 +6,6 @@ var GameHandler = {
     //alle Raeume durcharbeiten
     if(GameHandler.rooms.length > 0){
       for(var r in GameHandler.rooms){
-        console.log(r);
         GameHandler.rooms[r].run();
       }
     }else{
@@ -20,7 +19,7 @@ var GameHandler = {
   },
 
   init : function(){
-    console.log("Reinit");
+    //console.log("Reinit");
     for(var room in Game.rooms){
       var r = new RoomHandler(room);
       GameHandler.rooms.push(r);

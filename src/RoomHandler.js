@@ -6,7 +6,6 @@ var RoomHandler = function(room){
 };
 
 RoomHandler.prototype.run = function(){
-    console.log("RH run: "+this.room);
     this.ch.run();
 };
 
