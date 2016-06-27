@@ -10,8 +10,6 @@ var UpgradeModule = function(room){
 };
 
 UpgradeModule.prototype.run = function(){
-        console.log("UpgradeModule run: "+this.room);
-
         var creeps = Game.rooms[this.room].find(FIND_MY_CREEPS);
         creeps = _.filter(creeps, (creep) => creep.memory.task == 'upgrade');
         for(var cr in creeps){

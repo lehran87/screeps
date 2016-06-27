@@ -10,8 +10,6 @@ var BuildModule = function(room){
 };
 
 BuildModule.prototype.run = function(){
-        console.log("BuildModule run: "+this.room);
-
         var creeps = Game.rooms[this.room].find(FIND_MY_CREEPS);
         creeps = _.filter(creeps, (creep) => creep.memory.task == 'build');
         for(var cr in creeps){

@@ -15,6 +15,14 @@ HarvestModule.prototype.run = function(){
         creeps = _.filter(creeps, (creep) => creep.memory.task == 'harvest');
         var spawn = Game.rooms[this.room].find(FIND_MY_SPAWNS);
         spawn = _.filter(spawn, (sp) => sp.energy < sp.energyCapacity);
+
+        var containers = Game.rooms[this.room].find(FIND_STRUCTURES);
+        console.log("c1: "+JSON.stringify(containers));
+        containers = _.filter(containers, (c) => c.structureType === STRUCTURE_CONTAINER);
+        console.log("c2: "+JSON.stringify(containers));
+        containers = _.filter(containers, (c) => c.store[RESOURCE_ENERGY] < c.storeCapacity);
+        console.log("c3: "+JSON.stringify(containers));
+
         for(var cr in creeps){
           var creep = creeps[cr];
           if(creep.carry.energy < creep.carryCapacity) {
@@ -23,9 +31,16 @@ HarvestModule.prototype.run = function(){
                        creep.moveTo(source);
                    }
           }else {
-            if(creep.transfer(spawn[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(spawn[0]);
-             }
+            if(spawn[0]){
+              if(creep.transfer(spawn[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                  creep.moveTo(spawn[0]);
+               }
+            } else {
+              console.log("Container "+containers[0]);
+              if(creep.transfer(containers[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                  creep.moveTo(containers[0]);
+               }
+            }
           }
         }
         if(creeps.length < Population.harvester){
