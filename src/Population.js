@@ -1,15 +1,15 @@
 var Population = {
-  builder = 1,
-  harvester = 1,
-  upgrader = 1
+  builder: 1,
+  harvester: 1,
+  upgrader: 1,
 
 
   // Body fuer ein Harvester Creep
-  harvestBody = [WORK, MOVE, MOVE, CARRY];
+  harvestBody: [WORK, MOVE, MOVE, CARRY],
   // Body fuer ein Upgrader Creep
-  upgraderBody = [WORK, MOVE, MOVE, CARRY];
+  upgraderBody: [WORK, MOVE, MOVE, CARRY],
   // Body fuer ein Builder Creep
-  upgraderBody = [WORK, MOVE, CARRY, CARRY];
+  upgraderBody: [WORK, MOVE, CARRY, CARRY]
 };
 
 module.exports = Population;

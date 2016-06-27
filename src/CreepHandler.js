@@ -5,6 +5,7 @@
 //  - dynamische Rollenaenderung: wird gerade kein Creep einer bestimmten
 //    Rolle benoetigt, koennte er solang was anders machen (z.B. von Builder zu
 //    ernter umschulen)
+
 var Population = require('Population');
 var HarvestModule = require('HarvestModule');
 var UpgradeModule = require('UpgradeModule');
