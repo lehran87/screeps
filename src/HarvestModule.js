@@ -17,11 +17,8 @@ HarvestModule.prototype.run = function(){
         spawn = _.filter(spawn, (sp) => sp.energy < sp.energyCapacity);
 
         var containers = Game.rooms[this.room].find(FIND_STRUCTURES);
-        console.log("c1: "+JSON.stringify(containers));
         containers = _.filter(containers, (c) => c.structureType === STRUCTURE_CONTAINER);
-        console.log("c2: "+JSON.stringify(containers));
         containers = _.filter(containers, (c) => c.store[RESOURCE_ENERGY] < c.storeCapacity);
-        console.log("c3: "+JSON.stringify(containers));
 
         for(var cr in creeps){
           var creep = creeps[cr];
