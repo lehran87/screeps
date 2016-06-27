@@ -1,17 +1,19 @@
 var RoomHandler = require('RoomHandler');
 
 var GameHandler = {
-  rooms: [],
+  rooms: [], //alle bekannten Raeume
   run : function(){
-    console.log("GH runs "+GameHandler.rooms);
+    //alle Raeume durcharbeiten
     if(GameHandler.rooms.length > 0){
       for(var r in GameHandler.rooms){
         console.log(r);
         GameHandler.rooms[r].run();
       }
     }else{
+      //sind keine Raeume bekannt, versuche wir erstmal eine initialisierung
       GameHandler.init();
     }
+    //Zusaetzlich wird alle x Ticks ebenfalls die Raeume neu initialisiert
     if(Game.time % 100 === 0){
       GameHandler.init();
     }

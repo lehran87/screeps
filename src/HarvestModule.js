@@ -1,3 +1,9 @@
+//Creep, der die Source erntet und den Spawner fuellt
+//
+//Todo: ist der Spawner voll, koennten Container gefuellt werden
+
+var Population = require('Population');
+
 var HarvestModule = function(room){
     this.room = room;
 };
@@ -12,18 +18,17 @@ HarvestModule.prototype.run = function(){
         for(var cr in creeps){
           var creep = creeps[cr];
           if(creep.carry.energy < creep.carryCapacity) {
-                   var sources = creep.pos.findClosestByRange(FIND_SOURCES);
-                   if(creep.harvest(sources) == ERR_NOT_IN_RANGE) {
-                       creep.moveTo(sources);
+                   var source = creep.pos.findClosestByRange(FIND_SOURCES);
+                   if(creep.harvest(source) == ERR_NOT_IN_RANGE) {
+                       creep.moveTo(source);
                    }
           }else {
-            var e = creep.transfer(spawn[0], RESOURCE_ENERGY);
             if(creep.transfer(spawn[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(spawn[0]);
              }
           }
         }
-        if(creeps.length < Memory.harvester){
+        if(creeps.length < Population.harvester){
             return -1;
         }
         return 1;
