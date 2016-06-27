@@ -9,7 +9,7 @@ var Population = {
   // Body fuer ein Upgrader Creep
   upgraderBody: [WORK, MOVE, MOVE, CARRY],
   // Body fuer ein Builder Creep
-  upgraderBody: [WORK, MOVE, CARRY, CARRY]
+  builderBody: [WORK, MOVE, CARRY, CARRY]
 };
 
 module.exports = Population;

@@ -49,7 +49,7 @@ CreepHandler.prototype.createNewCreep = function(type){
             console.log("Neuer Creep: "+name);
           }
           break;
-      case 'upgrade':
+      case 'build':
         var spawn = Game.rooms[this.room].find(FIND_MY_SPAWNS);
         spawn = _.filter(spawn, (sp) => sp.canCreateCreep(Population.builderBody)==0);
         if(spawn.length > 0 ){

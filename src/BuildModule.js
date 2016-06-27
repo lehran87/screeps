@@ -10,7 +10,7 @@ var BuildModule = function(room){
 };
 
 BuildModule.prototype.run = function(){
-        console.log("UpgradeModule run: "+this.room);
+        console.log("BuildModule run: "+this.room);
 
         var creeps = Game.rooms[this.room].find(FIND_MY_CREEPS);
         creeps = _.filter(creeps, (creep) => creep.memory.task == 'build');
